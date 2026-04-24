@@ -10,7 +10,7 @@ import { prisma } from "../lib/prisma.js";
 /** Se construye dinámicamente con las categorías reales de la DB. */
 async function getCategoryNames(): Promise<[string, ...string[]]> {
   const rows = await prisma.category.findMany({ select: { name: true } });
-  const names = rows.map((r) => r.name);
+  const names = rows.map((r: { name: string }) => r.name);
   if (names.length === 0) {
     throw new Error("No hay categorías en la base de datos. Corré el seed primero.");
   }

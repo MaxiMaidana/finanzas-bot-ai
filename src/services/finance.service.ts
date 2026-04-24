@@ -75,7 +75,7 @@ export async function processTransactionData(
   const isReceipt = hasMerchant || extraction.items.length > 1 || imageUrl;
 
   // Transacción atómica: crea Receipt (si aplica) + todos los Transaction
-  return prisma.$transaction(async (tx) => {
+  return prisma.$transaction(async (tx: typeof prisma) => {
     let receiptId: string | null = null;
 
     if (isReceipt) {
@@ -154,7 +154,7 @@ export async function cancelLastTransaction(
       }),
     ]);
 
-    const totalAnulado = receiptTxs.reduce((sum, t) => sum + t.amount, 0);
+    const totalAnulado = receiptTxs.reduce((sum: number, t: { amount: number }) => sum + t.amount, 0);
     const merchant = lastTx.receipt.merchant ?? "sin comercio";
 
     return {
@@ -216,7 +216,7 @@ export async function cancelSpecificItem(
 
   // Buscar el ítem que mejor coincida (búsqueda case-insensitive parcial)
   const needle = itemDescription.toLowerCase();
-  const match = recentTxs.find((tx) =>
+  const match = recentTxs.find((tx: { description: string }) =>
     tx.description.toLowerCase().includes(needle),
   );
 
@@ -239,7 +239,7 @@ export async function cancelSpecificItem(
       select: { amount: true },
     });
 
-    const newTotal = remaining.reduce((sum, t) => sum + t.amount, 0);
+    const newTotal = remaining.reduce((sum: number, t: { amount: number }) => sum + t.amount, 0);
 
     if (remaining.length === 0) {
       // No quedan ítems → anular el recibo también
