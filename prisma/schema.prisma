@@ -1,0 +1,73 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id         String   @id @default(uuid()) @db.Uuid
+  telegramId String   @unique @map("telegram_id")
+  name       String
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  receipts     Receipt[]
+  transactions Transaction[]
+
+  @@map("users")
+}
+
+model Category {
+  id          String  @id @default(uuid()) @db.Uuid
+  name        String  @unique
+  description String?
+
+  transactions Transaction[]
+
+  @@map("categories")
+}
+
+model Receipt {
+  id          String   @id @default(uuid()) @db.Uuid
+  merchant    String?
+  totalAmount Float    @map("total_amount")
+  imageUrl    String?  @map("image_url")
+  status      String   @default("ACTIVO")
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  userId String @map("user_id") @db.Uuid
+  user   User   @relation(fields: [userId], references: [id])
+
+  transactions Transaction[]
+
+  @@index([userId])
+  @@index([status])
+  @@map("receipts")
+}
+
+model Transaction {
+  id          String   @id @default(uuid()) @db.Uuid
+  amount      Float
+  description String
+  type        String   @default("EGRESO")
+  status      String   @default("ACTIVO")
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  categoryId String   @map("category_id") @db.Uuid
+  category   Category @relation(fields: [categoryId], references: [id])
+
+  userId String @map("user_id") @db.Uuid
+  user   User   @relation(fields: [userId], references: [id])
+
+  receiptId String?  @map("receipt_id") @db.Uuid
+  receipt   Receipt? @relation(fields: [receiptId], references: [id])
+
+  @@index([userId])
+  @@index([categoryId])
+  @@index([receiptId])
+  @@index([status])
+  @@index([type])
+  @@map("transactions")
+}
