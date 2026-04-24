@@ -16,6 +16,9 @@ const categories = [
   { name: "Salidas y Ocio", description: "Restaurantes, bares, cine y entretenimiento presencial" },
   { name: "Transporte", description: "Combustible, peajes, estacionamiento y transporte público" },
   { name: "Indumentaria", description: "Ropa, calzado y accesorios personales" },
+  { name: "Vivienda y Alquiler", description: "Alquiler, expensas y gastos fijos de vivienda" },
+  { name: "Ahorro e Inversiones", description: "Compra de dólares, transferencias a cuentas de inversión y ahorro" },
+  { name: "Mantenimiento y Arreglos", description: "Ferretería, repuestos, arreglos del hogar y mecánicos" },
   { name: "Otros", description: "Gastos que no encajan en otra categoría" },
 ];
 

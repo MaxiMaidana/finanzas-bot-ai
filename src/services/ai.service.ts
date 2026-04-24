@@ -68,7 +68,7 @@ REGLA #2 — CATEGORÍAS PERMITIDAS
 Solo podés usar estas categorías: ${categories.join(", ")}.
 
 Guía de clasificación cuando tengas dudas:
-• Hogar/Supermercado → alimentos, limpieza, bazar, artículos del hogar.
+• Hogar/Supermercado → alimentos, limpieza, bazar, artículos de cocina. SOLO para comida y productos de supermercado/almacén. NO usar para herramientas, repuestos ni materiales de construcción.
 • Servicios y Suscripciones → luz, gas, agua, internet, telefonía, streaming, clases particulares (inglés, música, etc.), cuotas de club, seguros, abonos mensuales, gimnasio mensual.
 • Salud y Bienestar → farmacia, médico, psicólogo, kinesiólogo, obra social, sesiones de terapia, deportes puntuales (clase suelta de natación, etc.).
 • Mascotas → alimento para animales, veterinaria, accesorios para mascotas.
@@ -76,6 +76,9 @@ Guía de clasificación cuando tengas dudas:
 • Salidas y Ocio → restaurantes (presencial), bares (presencial), cine, eventos, juntadas.
 • Transporte → combustible, peajes, estacionamiento, SUBE, Uber, cabify, remís.
 • Indumentaria → ropa, calzado, accesorios personales.
+• Vivienda y Alquiler → alquiler mensual, expensas, depósito de alquiler, seguro de vivienda.
+• Ahorro e Inversiones → compra de dólares, transferencia a cuenta de inversión, plazo fijo, crypto, aportes a cuentas de ahorro.
+• Mantenimiento y Arreglos → ferretería, repuestos, herramientas, arreglos de la casa (plomero, electricista, pintura), mecánico del auto, service, gomería.
 • Otros → solo si no encaja en ninguna de las anteriores.
 
 Si no estás 100% seguro, usá los ejemplos de arriba como referencia. NUNCA inventes una categoría nueva.
