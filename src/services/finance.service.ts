@@ -1,4 +1,5 @@
 import { prisma } from "../lib/prisma.js";
+import { Prisma } from "../generated/prisma/client.js";
 import type { ExtractionResult } from "./ai.service.js";
 
 // ---------------------------------------------------------------------------
@@ -75,7 +76,7 @@ export async function processTransactionData(
   const isReceipt = hasMerchant || extraction.items.length > 1 || imageUrl;
 
   // Transacción atómica: crea Receipt (si aplica) + todos los Transaction
-  return prisma.$transaction(async (tx: typeof prisma) => {
+  return prisma.$transaction(async (tx: Prisma.TransactionClient) => {
     let receiptId: string | null = null;
 
     if (isReceipt) {
